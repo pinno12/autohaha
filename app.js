@@ -314,3 +314,5 @@ models.sequelize.sync().then( () => {
 app.listen(3000, function () {
   console.log('HaHa Admin page listening on port 3000!');
 });
+
+//test
