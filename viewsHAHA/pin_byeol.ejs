@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <title><%= title %></title>
+  <% include partials/head %>
+  <% include scripts/scripts %>
+ <body>
+  <% include partials/header %>
+
+<div class="ui two column centered grid">
+    <dic class = "column">
+    <h4 class="ui horizontal divider header">
+    <i class="tag icon"></i>
+    별풍선 등록
+    </h4>    
+       
+<table class="ui celled table">
+    <% include partials/SelectPrice.ejs %>
+  <thead>
+    <tr><th>쿠폰 번호</th>
+    <th>비밀 번호</th>
+    <th>별풍선 개수</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <td data-label="Name">MHIESYMITV123456</td>
+      <td data-label="Age">123456</td>
+      <td data-label="Job">100</td>
+    </tr>
+
+  </tbody>
+</table>
+        
+<table class="ui definition table" >
+<tbody>
+<!-- <tr>
+<td class="six wide colun" >
+
+</td>
+<td>STARBUCS-1</td>
+</tr> -->
+<!-- <tr>
+<td>상품권 종류*</td>
+<td>스타벅스</td>
+</tr> -->
+<tr>
+  <td>금액(원)</td>
+  <td>
+    <div class="ui dropdown">
+      <div class="text">금액</div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item">
+          <span class="description">3천원</span>
+          3,000원</div>
+        <div class="item">
+      <span class="description">5천원</span>
+      5,000원
+    </div>
+        <div class="item">
+     <span class="description">10,000원</span>
+     만 원
+   </div>
+ </div>
+</div>
+
+    <div class="ui dropdown item hh">
+      금액
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item">3,000 원</div>
+        <div class="item">5,000 원</div>
+        <div class="item">10,000 원</div>
+        <div class="item">50,000 원</div>
+        <div class="item">10,000 원</div>
+        <div class = "item">기타</div>
+<!-- 3,000
+5,000
+10,000
+30,000
+50,000
+100,000 -->
+      </div>
+    </div>
+
+  </td>
+</tr>
+
+<tr>
+<td>핀번호* (여러 줄 입력)</td>
+<td>1234-1234-1234-1234</br>
+1234-1234-1234-1234</br>
+1234-1234-1234-1234
+</td>
+<!-- juery로 받기 -->
+</tr>
+<p>3개 핀 입력</p>
+</tbody>
+</table>
+
+<button class="ui right floated primary button">
+저장
+</button>
+<button class="ui right floated button">
+삭제
+</button>
+<button class="ui right floated button">
+수정
+</button>
+</div>
+</body>
+
+</html>

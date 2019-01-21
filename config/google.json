@@ -1,0 +1,16 @@
+{
+  "web": {
+    "client_id": "253170490783-02f88eh6e2fbk3h6718fh0v8m4f1oagn.apps.googleusercontent.com",
+    "project_id": "amazing-folio-101610",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://www.googleapis.com/oauth2/v3/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "w84SvzKhE_bhaRqIo-rrLZ7t",
+    "redirect_uris": [
+      "http://localhost:3000/auth/google/callback"
+    ],
+    "javascript_origins": [
+      "http://localhost:3000"
+    ]
+  }
+}

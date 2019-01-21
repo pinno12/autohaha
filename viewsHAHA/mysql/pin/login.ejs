@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>★하하 관리자 페이지에 로그인합니다</title>
+    <% include partials/head %>
+    <% include scripts/scripts %>
+  <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
+  
+</head>
+<body>
+
+<h1>Login</h1>
+  <form action="/auth/login" method="post">
+    <p>
+      <input type="text" name="username" placeholder="username">
+    </p>
+    <p>
+      <input type="password" name="password" placeholder="password">
+    </p>
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+  
+<!-- <a href="/auth/facebook"><div class="ui fluid large teal submit button">페이스북 아이디로 로그인</div></a> -->
+<a href="/auth/google"><div class="ui fluid large teal submit button">구글 아이디로 로그인</div></a>
+
+<% include partials/footer %>
+</body>
+
+</html>

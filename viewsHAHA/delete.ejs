@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <% include partials/head %>
+  <% include scripts/scripts %>
+</head>
+<body>
+  <% include partials/header %>
+<!-- <div class = "ui main text container"> -->
+<div class="ui two column centered grid" style="padding-top: 5.75rem">
+<div class = "column">
+    <!-- var pin = <% if(locals.pin){ %>pin defined<% }else{ %>pin undefined<% } %>; -->
+  <table class="ui table">
+    <tbody>
+      <tr>
+        <td class="collapsing">
+          <i class="folder icon"></i> 조회 기간
+        </td>
+        <td>
+          <div class="ui compact selection dropdown" id="hh-search">
+            <i class="dropdown icon"></i>
+
+            <div class="text">2018</div>
+            <div class="menu">
+              <div class="item">2018</div>
+              <div class="item">2019</div>
+              <div class="item">2020</div>
+            </div>
+          </div>년
+          <div class="ui compact selection dropdown" id="hh-search">
+            <i class="dropdown icon"></i>
+            <div class="text">7</div>
+            <div class="menu">
+              <div class="item">1</div>
+              <div class="item">2</div>
+              <div class="item">3</div>
+            </div>
+          </div>월
+
+        </td>
+
+      </tr>
+      <tr>
+        <td>
+          <i class="folder icon"></i> 등록자
+        </td>
+        <td>천주현</td>
+
+      </tr>
+      <tr>
+        <td>
+          <i class="folder icon"></i> 메모
+        </td>
+        <td>ㅎㅎ
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class = "column">
+  <button class="ui right floated secondary button">
+    검색
+  </button>
+</div>
+</div>
+</div>
+<div class="ui two column centered grid">
+  <div class = "column">
+  총: <%=pins.length%> 건
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>등록자</th>
+        <th>하하ID</th>
+        <th>상품권ID</th>
+        <th>등록일시</th>
+        <th>금액</th>
+        <th>주문 번호</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (let pin=0; pin<pins.length; pin++) {%>
+        <tr>
+          <td><%= pins[pin].name %></td>
+          <!-- giftcardId에 상세 내역 추가 -->
+          <td><a href = "/pin/<%=pins[pin].id%>"><%= pins[pin].id %></a></td>
+          <td><%= pins[pin].giftcardId %></a></td> 
+          <td><%=pins[pin].date %></td>
+          <td><%=pins[pin].price %></td>
+          <!-- order Id에 상세 주문 내역 추가 -->
+          <td><%=pins[pin].order_id %></td>
+        </tr>
+        <% } %>
+
+      </tbody>
+      <%=pin.giftcardId%>를 삭제하시겠습니까?
+      <form action='/pin/<%=pin.id%>/delete' method='post'>
+        <input type = 'submit' value = '네'>
+      </form>
+      <a href='/pin/<%=pin.id%>'>아니오</a>
+  </div>
+
+</div>
+
+<% include partials/footer %>
+<!-- <script>
+$(".giftcardId").click(function(){
+  window.location.href = '/pins/'+$(this).data('id');
+});
+</script> -->
+</body>
+</html>

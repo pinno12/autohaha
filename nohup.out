@@ -1,0 +1,1261 @@
+Wed, 16 Jan 2019 07:33:59 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+HaHa Admin page listening on port 3000!
+Executing (default): CREATE TABLE IF NOT EXISTS `giftcards` (`id` INTEGER NOT NULL auto_increment , `name` TINYTEXT, `nickname` TINYTEXT, `Ispassword` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `giftcards` FROM `haha_manage`
+Executing (default): CREATE TABLE IF NOT EXISTS `orderedItems` (`id` INTEGER NOT NULL auto_increment , `order_number` TINYTEXT, `productName` VARCHAR(255), `productOption` VARCHAR(255), `orderedSite` VARCHAR(255), `userName` TINYTEXT, `userPhone` TINYTEXT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `orderedItems` FROM `haha_manage`
+Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255), `authId` VARCHAR(255), `displayName` TINYTEXT, `email` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `users` FROM `haha_manage`
+Executing (default): CREATE TABLE IF NOT EXISTS `pins` (`id` INTEGER NOT NULL auto_increment , `writer` TINYTEXT, `price` INTEGER, `pin_number` VARCHAR(255), `pin_number2` VARCHAR(255), `memo` VARCHAR(255), `Isordered` TINYINT(1), `userName` TINYTEXT, `userPhone` TINYTEXT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `giftcardId` INTEGER, `orderedId` INTEGER, `userId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`giftcardId`) REFERENCES `giftcards` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`orderedId`) REFERENCES `orderedItems` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `pins` FROM `haha_manage`
+ DB 연결 성공
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.set (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:224:8)
+    at Session.save (/home/ubuntu/haha/node_modules/express-session/session/session.js:72:25)
+    at Session.save (/home/ubuntu/haha/node_modules/express-session/index.js:381:15)
+    at ServerResponse.end (/home/ubuntu/haha/node_modules/express-session/index.js:330:21)
+    at ServerResponse.send (/home/ubuntu/haha/node_modules/express/lib/response.js:221:10)
+    at models.pin.findAndCountAll.then.catch (/home/ubuntu/haha/app.js:221:23)
+    at tryCatcher (/home/ubuntu/haha/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:690:18)
+    at _drainQueueStep (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:138:12)
+    at _drainQueue (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:131:9)
+    at Async._drainQueues (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:147:5)
+    at Immediate.Async.drainQueues (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:17:14)
+    at processImmediate (timers.js:632:19)
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.set (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:224:8)
+    at Session.save (/home/ubuntu/haha/node_modules/express-session/session/session.js:72:25)
+    at Session.save (/home/ubuntu/haha/node_modules/express-session/index.js:381:15)
+    at ServerResponse.end (/home/ubuntu/haha/node_modules/express-session/index.js:330:21)
+    at ServerResponse.send (/home/ubuntu/haha/node_modules/express/lib/response.js:221:10)
+    at models.pin.findAndCountAll.then.catch (/home/ubuntu/haha/app.js:221:23)
+    at tryCatcher (/home/ubuntu/haha/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:690:18)
+    at _drainQueueStep (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:138:12)
+    at _drainQueue (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:131:9)
+    at Async._drainQueues (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:147:5)
+    at Immediate.Async.drainQueues (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:17:14)
+    at processImmediate (timers.js:632:19)
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.get (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:161:8)
+    at session (/home/ubuntu/haha/node_modules/express-session/index.js:460:11)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/haha/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SendStream.error (/home/ubuntu/haha/node_modules/serve-static/index.js:121:7)
+    at SendStream.emit (events.js:189:13)
+    at SendStream.error (/home/ubuntu/haha/node_modules/send/index.js:270:17)
+    at SendStream.onStatError (/home/ubuntu/haha/node_modules/send/index.js:421:12)
+    at next (/home/ubuntu/haha/node_modules/send/index.js:736:16)
+    at onstat (/home/ubuntu/haha/node_modules/send/index.js:725:14)
+    at FSReqCallback.oncomplete (fs.js:160:21)
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.get (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:161:8)
+    at session (/home/ubuntu/haha/node_modules/express-session/index.js:460:11)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/haha/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SendStream.error (/home/ubuntu/haha/node_modules/serve-static/index.js:121:7)
+    at SendStream.emit (events.js:189:13)
+    at SendStream.error (/home/ubuntu/haha/node_modules/send/index.js:270:17)
+    at SendStream.onStatError (/home/ubuntu/haha/node_modules/send/index.js:421:12)
+    at next (/home/ubuntu/haha/node_modules/send/index.js:736:16)
+    at onstat (/home/ubuntu/haha/node_modules/send/index.js:725:14)
+    at FSReqCallback.oncomplete (fs.js:160:21)
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.get (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:161:8)
+    at session (/home/ubuntu/haha/node_modules/express-session/index.js:460:11)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/haha/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SendStream.error (/home/ubuntu/haha/node_modules/serve-static/index.js:121:7)
+    at SendStream.emit (events.js:189:13)
+    at SendStream.error (/home/ubuntu/haha/node_modules/send/index.js:270:17)
+    at SendStream.onStatError (/home/ubuntu/haha/node_modules/send/index.js:421:12)
+    at onstat (/home/ubuntu/haha/node_modules/send/index.js:727:26)
+    at FSReqCallback.oncomplete (fs.js:160:21)
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.get (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:161:8)
+    at session (/home/ubuntu/haha/node_modules/express-session/index.js:460:11)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/haha/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SendStream.error (/home/ubuntu/haha/node_modules/serve-static/index.js:121:7)
+    at SendStream.emit (events.js:189:13)
+    at SendStream.error (/home/ubuntu/haha/node_modules/send/index.js:270:17)
+    at SendStream.onStatError (/home/ubuntu/haha/node_modules/send/index.js:421:12)
+    at next (/home/ubuntu/haha/node_modules/send/index.js:764:28)
+    at /home/ubuntu/haha/node_modules/send/index.js:772:23
+    at FSReqCallback.oncomplete (fs.js:160:21)
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.get (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:161:8)
+    at session (/home/ubuntu/haha/node_modules/express-session/index.js:460:11)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/haha/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SendStream.error (/home/ubuntu/haha/node_modules/serve-static/index.js:121:7)
+    at SendStream.emit (events.js:189:13)
+    at SendStream.error (/home/ubuntu/haha/node_modules/send/index.js:270:17)
+    at SendStream.onStatError (/home/ubuntu/haha/node_modules/send/index.js:421:12)
+    at next (/home/ubuntu/haha/node_modules/send/index.js:764:28)
+    at /home/ubuntu/haha/node_modules/send/index.js:772:23
+    at FSReqCallback.oncomplete (fs.js:160:21)
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.get (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:161:8)
+    at session (/home/ubuntu/haha/node_modules/express-session/index.js:460:11)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/haha/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SendStream.error (/home/ubuntu/haha/node_modules/serve-static/index.js:121:7)
+    at SendStream.emit (events.js:189:13)
+    at SendStream.error (/home/ubuntu/haha/node_modules/send/index.js:270:17)
+    at SendStream.onStatError (/home/ubuntu/haha/node_modules/send/index.js:421:12)
+    at next (/home/ubuntu/haha/node_modules/send/index.js:764:28)
+    at /home/ubuntu/haha/node_modules/send/index.js:772:23
+    at FSReqCallback.oncomplete (fs.js:160:21)
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.get (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:161:8)
+    at session (/home/ubuntu/haha/node_modules/express-session/index.js:460:11)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/haha/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SendStream.error (/home/ubuntu/haha/node_modules/serve-static/index.js:121:7)
+    at SendStream.emit (events.js:189:13)
+    at SendStream.error (/home/ubuntu/haha/node_modules/send/index.js:270:17)
+    at SendStream.onStatError (/home/ubuntu/haha/node_modules/send/index.js:421:12)
+    at onstat (/home/ubuntu/haha/node_modules/send/index.js:727:26)
+    at FSReqCallback.oncomplete (fs.js:160:21)
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.get (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:161:8)
+    at session (/home/ubuntu/haha/node_modules/express-session/index.js:460:11)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/haha/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SendStream.error (/home/ubuntu/haha/node_modules/serve-static/index.js:121:7)
+    at SendStream.emit (events.js:189:13)
+    at SendStream.error (/home/ubuntu/haha/node_modules/send/index.js:270:17)
+    at SendStream.onStatError (/home/ubuntu/haha/node_modules/send/index.js:421:12)
+    at next (/home/ubuntu/haha/node_modules/send/index.js:764:28)
+    at /home/ubuntu/haha/node_modules/send/index.js:772:23
+    at FSReqCallback.oncomplete (fs.js:160:21)
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.get (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:161:8)
+    at session (/home/ubuntu/haha/node_modules/express-session/index.js:460:11)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/haha/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SendStream.error (/home/ubuntu/haha/node_modules/serve-static/index.js:121:7)
+    at SendStream.emit (events.js:189:13)
+    at SendStream.error (/home/ubuntu/haha/node_modules/send/index.js:270:17)
+    at SendStream.onStatError (/home/ubuntu/haha/node_modules/send/index.js:421:12)
+    at next (/home/ubuntu/haha/node_modules/send/index.js:764:28)
+    at /home/ubuntu/haha/node_modules/send/index.js:772:23
+    at FSReqCallback.oncomplete (fs.js:160:21)
+Error: ER_NO_SUCH_TABLE: Table 'haha_manage.sessions' doesn't exist
+    at Query.Sequence._packetToError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+    --------------------
+    at Pool.query (/home/ubuntu/haha/node_modules/mysql/lib/Pool.js:199:23)
+    at MySQLStore.query (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:415:33)
+    at MySQLStore.get (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:161:8)
+    at session (/home/ubuntu/haha/node_modules/express-session/index.js:460:11)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/haha/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SendStream.error (/home/ubuntu/haha/node_modules/serve-static/index.js:121:7)
+    at SendStream.emit (events.js:189:13)
+    at SendStream.error (/home/ubuntu/haha/node_modules/send/index.js:270:17)
+    at SendStream.onStatError (/home/ubuntu/haha/node_modules/send/index.js:421:12)
+    at onstat (/home/ubuntu/haha/node_modules/send/index.js:727:26)
+    at FSReqCallback.oncomplete (fs.js:160:21)
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Error: Failed to lookup view "pin/pin_byeol" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at app.get (/home/ubuntu/haha/app.js:308:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/haha/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SessionStrategy.strategy.pass (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:338:9)
+    at SessionStrategy.authenticate (/home/ubuntu/haha/node_modules/passport/lib/strategies/session.js:75:10)
+    at attempt (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:361:16)
+    at authenticate (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:362:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at initialize (/home/ubuntu/haha/node_modules/passport/lib/middleware/initialize.js:53:5)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+Error: Failed to lookup view "pin/pin_byeol" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at app.get (/home/ubuntu/haha/app.js:308:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/haha/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SessionStrategy.strategy.pass (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:338:9)
+    at SessionStrategy.authenticate (/home/ubuntu/haha/node_modules/passport/lib/strategies/session.js:75:10)
+    at attempt (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:361:16)
+    at authenticate (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:362:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at initialize (/home/ubuntu/haha/node_modules/passport/lib/middleware/initialize.js:53:5)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+Error: Failed to lookup view "pin/indexHAHA" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at Query.<anonymous> (/home/ubuntu/haha/routes/mysql/pin.js:47:15)
+    at Query.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Query._callback (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:468:16)
+    at Query.Sequence.end (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+Error: Failed to lookup view "pin/indexHAHA" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at Query.<anonymous> (/home/ubuntu/haha/routes/mysql/pin.js:47:15)
+    at Query.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Query._callback (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:468:16)
+    at Query.Sequence.end (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+Error: Failed to lookup view "pin/indexHAHA" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at Query.<anonymous> (/home/ubuntu/haha/routes/mysql/pin.js:47:15)
+    at Query.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Query._callback (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:468:16)
+    at Query.Sequence.end (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+Error: Failed to lookup view "pin/indexHAHA" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at Query.<anonymous> (/home/ubuntu/haha/routes/mysql/pin.js:47:15)
+    at Query.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Query._callback (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:468:16)
+    at Query.Sequence.end (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+Error: Failed to lookup view "pin/indexHAHA" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at Query.<anonymous> (/home/ubuntu/haha/routes/mysql/pin.js:47:15)
+    at Query.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Query._callback (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:468:16)
+    at Query.Sequence.end (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Error: Failed to lookup view "pin/pin_byeol" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at app.get (/home/ubuntu/haha/app.js:308:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/haha/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SessionStrategy.strategy.pass (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:338:9)
+    at SessionStrategy.authenticate (/home/ubuntu/haha/node_modules/passport/lib/strategies/session.js:75:10)
+    at attempt (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:361:16)
+    at authenticate (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:362:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at initialize (/home/ubuntu/haha/node_modules/passport/lib/middleware/initialize.js:53:5)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+Error: Failed to lookup view "pin/money" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at app.get (/home/ubuntu/haha/app.js:311:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/haha/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SessionStrategy.strategy.pass (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:338:9)
+    at SessionStrategy.authenticate (/home/ubuntu/haha/node_modules/passport/lib/strategies/session.js:75:10)
+    at attempt (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:361:16)
+    at authenticate (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:362:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at initialize (/home/ubuntu/haha/node_modules/passport/lib/middleware/initialize.js:53:5)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+Error: Failed to lookup view "pin/indexHAHA" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at Query.<anonymous> (/home/ubuntu/haha/routes/mysql/pin.js:47:15)
+    at Query.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Query._callback (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:468:16)
+    at Query.Sequence.end (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+Error: Failed to lookup view "pin/indexHAHA" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at Query.<anonymous> (/home/ubuntu/haha/routes/mysql/pin.js:47:15)
+    at Query.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Query._callback (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:468:16)
+    at Query.Sequence.end (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query.ErrorPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','123','123','ㅁ','2019-01-16 08:29:47','2019-01-16 08:29:47',1);
+데이터 추가 실패 { SequelizeForeignKeyConstraintError: Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)
+    at Query.formatError (/home/ubuntu/haha/node_modules/sequelize/lib/dialects/mysql/query.js:236:16)
+    at Query.handler [as onResult] (/home/ubuntu/haha/node_modules/sequelize/lib/dialects/mysql/query.js:68:23)
+    at Query.execute (/home/ubuntu/haha/node_modules/mysql2/lib/commands/command.js:30:14)
+    at Connection.handlePacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:455:32)
+    at PacketParser.onPacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:73:18)
+    at PacketParser.executeStart (/home/ubuntu/haha/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:80:31)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+  name: 'SequelizeForeignKeyConstraintError',
+  parent:
+   { Error: Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)
+       at Packet.asError (/home/ubuntu/haha/node_modules/mysql2/lib/packets/packet.js:684:17)
+       at Query.execute (/home/ubuntu/haha/node_modules/mysql2/lib/commands/command.js:28:26)
+       at Connection.handlePacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:455:32)
+       at PacketParser.onPacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:73:18)
+       at PacketParser.executeStart (/home/ubuntu/haha/node_modules/mysql2/lib/packet_parser.js:75:16)
+       at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:80:31)
+       at Socket.emit (events.js:189:13)
+       at addChunk (_stream_readable.js:288:12)
+       at readableAddChunk (_stream_readable.js:269:11)
+       at Socket.Readable.push (_stream_readable.js:224:10)
+       at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+     code: 'ER_NO_REFERENCED_ROW_2',
+     errno: 1452,
+     sqlState: '23000',
+     sqlMessage:
+      'Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)',
+     sql:
+      "INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','123','123','ㅁ','2019-01-16 08:29:47','2019-01-16 08:29:47',1);" },
+  original:
+   { Error: Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)
+       at Packet.asError (/home/ubuntu/haha/node_modules/mysql2/lib/packets/packet.js:684:17)
+       at Query.execute (/home/ubuntu/haha/node_modules/mysql2/lib/commands/command.js:28:26)
+       at Connection.handlePacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:455:32)
+       at PacketParser.onPacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:73:18)
+       at PacketParser.executeStart (/home/ubuntu/haha/node_modules/mysql2/lib/packet_parser.js:75:16)
+       at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:80:31)
+       at Socket.emit (events.js:189:13)
+       at addChunk (_stream_readable.js:288:12)
+       at readableAddChunk (_stream_readable.js:269:11)
+       at Socket.Readable.push (_stream_readable.js:224:10)
+       at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+     code: 'ER_NO_REFERENCED_ROW_2',
+     errno: 1452,
+     sqlState: '23000',
+     sqlMessage:
+      'Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)',
+     sql:
+      "INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','123','123','ㅁ','2019-01-16 08:29:47','2019-01-16 08:29:47',1);" },
+  sql:
+   "INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','123','123','ㅁ','2019-01-16 08:29:47','2019-01-16 08:29:47',1);",
+  fields: [ 'userId' ],
+  table: 'users',
+  value: 1,
+  index: 'pins_ibfk_3',
+  reltype: 'child' }
+Unhandled rejection Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:482:11)
+    at ServerResponse.header (/home/ubuntu/haha/node_modules/express/lib/response.js:767:10)
+    at ServerResponse.send (/home/ubuntu/haha/node_modules/express/lib/response.js:170:12)
+    at models.pin.create.then.catch.err (/home/ubuntu/haha/app.js:251:13)
+    at tryCatcher (/home/ubuntu/haha/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:690:18)
+    at _drainQueueStep (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:138:12)
+    at _drainQueue (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:131:9)
+    at Async._drainQueues (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:147:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:17:14)
+    at processImmediate (timers.js:632:19)
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','1234','1234','ㄷㄹ','2019-01-16 08:30:02','2019-01-16 08:30:02',1);
+데이터 추가 실패 { SequelizeForeignKeyConstraintError: Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)
+    at Query.formatError (/home/ubuntu/haha/node_modules/sequelize/lib/dialects/mysql/query.js:236:16)
+    at Query.handler [as onResult] (/home/ubuntu/haha/node_modules/sequelize/lib/dialects/mysql/query.js:68:23)
+    at Query.execute (/home/ubuntu/haha/node_modules/mysql2/lib/commands/command.js:30:14)
+    at Connection.handlePacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:455:32)
+    at PacketParser.onPacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:73:18)
+    at PacketParser.executeStart (/home/ubuntu/haha/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:80:31)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+  name: 'SequelizeForeignKeyConstraintError',
+  parent:
+   { Error: Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)
+       at Packet.asError (/home/ubuntu/haha/node_modules/mysql2/lib/packets/packet.js:684:17)
+       at Query.execute (/home/ubuntu/haha/node_modules/mysql2/lib/commands/command.js:28:26)
+       at Connection.handlePacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:455:32)
+       at PacketParser.onPacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:73:18)
+       at PacketParser.executeStart (/home/ubuntu/haha/node_modules/mysql2/lib/packet_parser.js:75:16)
+       at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:80:31)
+       at Socket.emit (events.js:189:13)
+       at addChunk (_stream_readable.js:288:12)
+       at readableAddChunk (_stream_readable.js:269:11)
+       at Socket.Readable.push (_stream_readable.js:224:10)
+       at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+     code: 'ER_NO_REFERENCED_ROW_2',
+     errno: 1452,
+     sqlState: '23000',
+     sqlMessage:
+      'Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)',
+     sql:
+      "INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','1234','1234','ㄷㄹ','2019-01-16 08:30:02','2019-01-16 08:30:02',1);" },
+  original:
+   { Error: Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)
+       at Packet.asError (/home/ubuntu/haha/node_modules/mysql2/lib/packets/packet.js:684:17)
+       at Query.execute (/home/ubuntu/haha/node_modules/mysql2/lib/commands/command.js:28:26)
+       at Connection.handlePacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:455:32)
+       at PacketParser.onPacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:73:18)
+       at PacketParser.executeStart (/home/ubuntu/haha/node_modules/mysql2/lib/packet_parser.js:75:16)
+       at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:80:31)
+       at Socket.emit (events.js:189:13)
+       at addChunk (_stream_readable.js:288:12)
+       at readableAddChunk (_stream_readable.js:269:11)
+       at Socket.Readable.push (_stream_readable.js:224:10)
+       at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+     code: 'ER_NO_REFERENCED_ROW_2',
+     errno: 1452,
+     sqlState: '23000',
+     sqlMessage:
+      'Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)',
+     sql:
+      "INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','1234','1234','ㄷㄹ','2019-01-16 08:30:02','2019-01-16 08:30:02',1);" },
+  sql:
+   "INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','1234','1234','ㄷㄹ','2019-01-16 08:30:02','2019-01-16 08:30:02',1);",
+  fields: [ 'userId' ],
+  table: 'users',
+  value: 1,
+  index: 'pins_ibfk_3',
+  reltype: 'child' }
+Unhandled rejection Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:482:11)
+    at ServerResponse.header (/home/ubuntu/haha/node_modules/express/lib/response.js:767:10)
+    at ServerResponse.send (/home/ubuntu/haha/node_modules/express/lib/response.js:170:12)
+    at models.pin.create.then.catch.err (/home/ubuntu/haha/app.js:251:13)
+    at tryCatcher (/home/ubuntu/haha/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:690:18)
+    at _drainQueueStep (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:138:12)
+    at _drainQueue (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:131:9)
+    at Async._drainQueues (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:147:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:17:14)
+    at processImmediate (timers.js:632:19)
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','111111111111','111111111111','ㅁㅁㅁㅁ','2019-01-16 08:30:22','2019-01-16 08:30:22',1);
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+데이터 추가 실패 { SequelizeForeignKeyConstraintError: Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)
+    at Query.formatError (/home/ubuntu/haha/node_modules/sequelize/lib/dialects/mysql/query.js:236:16)
+    at Query.handler [as onResult] (/home/ubuntu/haha/node_modules/sequelize/lib/dialects/mysql/query.js:68:23)
+    at Query.execute (/home/ubuntu/haha/node_modules/mysql2/lib/commands/command.js:30:14)
+    at Connection.handlePacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:455:32)
+    at PacketParser.onPacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:73:18)
+    at PacketParser.executeStart (/home/ubuntu/haha/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:80:31)
+    at Socket.emit (events.js:189:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+  name: 'SequelizeForeignKeyConstraintError',
+  parent:
+   { Error: Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)
+       at Packet.asError (/home/ubuntu/haha/node_modules/mysql2/lib/packets/packet.js:684:17)
+       at Query.execute (/home/ubuntu/haha/node_modules/mysql2/lib/commands/command.js:28:26)
+       at Connection.handlePacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:455:32)
+       at PacketParser.onPacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:73:18)
+       at PacketParser.executeStart (/home/ubuntu/haha/node_modules/mysql2/lib/packet_parser.js:75:16)
+       at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:80:31)
+       at Socket.emit (events.js:189:13)
+       at addChunk (_stream_readable.js:288:12)
+       at readableAddChunk (_stream_readable.js:269:11)
+       at Socket.Readable.push (_stream_readable.js:224:10)
+       at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+     code: 'ER_NO_REFERENCED_ROW_2',
+     errno: 1452,
+     sqlState: '23000',
+     sqlMessage:
+      'Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)',
+     sql:
+      "INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','111111111111','111111111111','ㅁㅁㅁㅁ','2019-01-16 08:30:22','2019-01-16 08:30:22',1);" },
+  original:
+   { Error: Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)
+       at Packet.asError (/home/ubuntu/haha/node_modules/mysql2/lib/packets/packet.js:684:17)
+       at Query.execute (/home/ubuntu/haha/node_modules/mysql2/lib/commands/command.js:28:26)
+       at Connection.handlePacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:455:32)
+       at PacketParser.onPacket (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:73:18)
+       at PacketParser.executeStart (/home/ubuntu/haha/node_modules/mysql2/lib/packet_parser.js:75:16)
+       at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql2/lib/connection.js:80:31)
+       at Socket.emit (events.js:189:13)
+       at addChunk (_stream_readable.js:288:12)
+       at readableAddChunk (_stream_readable.js:269:11)
+       at Socket.Readable.push (_stream_readable.js:224:10)
+       at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:145:17)
+     code: 'ER_NO_REFERENCED_ROW_2',
+     errno: 1452,
+     sqlState: '23000',
+     sqlMessage:
+      'Cannot add or update a child row: a foreign key constraint fails (`haha_manage`.`pins`, CONSTRAINT `pins_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE)',
+     sql:
+      "INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','111111111111','111111111111','ㅁㅁㅁㅁ','2019-01-16 08:30:22','2019-01-16 08:30:22',1);" },
+  sql:
+   "INSERT INTO `pins` (`id`,`price`,`pin_number`,`pin_number2`,`memo`,`createdAt`,`updatedAt`,`userId`) VALUES (DEFAULT,'100000','111111111111','111111111111','ㅁㅁㅁㅁ','2019-01-16 08:30:22','2019-01-16 08:30:22',1);",
+  fields: [ 'userId' ],
+  table: 'users',
+  value: 1,
+  index: 'pins_ibfk_3',
+  reltype: 'child' }
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Unhandled rejection Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:482:11)
+    at ServerResponse.header (/home/ubuntu/haha/node_modules/express/lib/response.js:767:10)
+    at ServerResponse.send (/home/ubuntu/haha/node_modules/express/lib/response.js:170:12)
+    at models.pin.create.then.catch.err (/home/ubuntu/haha/app.js:251:13)
+    at tryCatcher (/home/ubuntu/haha/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/home/ubuntu/haha/node_modules/bluebird/js/release/promise.js:690:18)
+    at _drainQueueStep (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:138:12)
+    at _drainQueue (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:131:9)
+    at Async._drainQueues (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:147:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (/home/ubuntu/haha/node_modules/bluebird/js/release/async.js:17:14)
+    at processImmediate (timers.js:632:19)
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Error: Failed to lookup view "pin/money" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at app.get (/home/ubuntu/haha/app.js:311:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/haha/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SessionStrategy.strategy.pass (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:338:9)
+    at SessionStrategy.authenticate (/home/ubuntu/haha/node_modules/passport/lib/strategies/session.js:75:10)
+    at attempt (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:361:16)
+    at authenticate (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:362:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at initialize (/home/ubuntu/haha/node_modules/passport/lib/middleware/initialize.js:53:5)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+Error: Failed to lookup view "pin/money" in views directory "./viewsHAHA/mysql/"
+    at Function.render (/home/ubuntu/haha/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/haha/node_modules/express/lib/response.js:1008:7)
+    at app.get (/home/ubuntu/haha/app.js:311:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/haha/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at SessionStrategy.strategy.pass (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:338:9)
+    at SessionStrategy.authenticate (/home/ubuntu/haha/node_modules/passport/lib/strategies/session.js:75:10)
+    at attempt (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:361:16)
+    at authenticate (/home/ubuntu/haha/node_modules/passport/lib/middleware/authenticate.js:362:7)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+    at /home/ubuntu/haha/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/ubuntu/haha/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/haha/node_modules/express/lib/router/index.js:275:10)
+    at initialize (/home/ubuntu/haha/node_modules/passport/lib/middleware/initialize.js:53:5)
+    at Layer.handle [as handle_request] (/home/ubuntu/haha/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ubuntu/haha/node_modules/express/lib/router/index.js:317:13)
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Wed, 16 Jan 2019 08:34:00 GMT express deprecated res.redirect(url, status): Use res.redirect(status, url) instead at routes/mysql/auth.js:26:9
+/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:80
+        throw err; // Rethrow non-MySQL errors
+        ^
+
+RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: [object Object]
+    at ServerResponse.writeHead (_http_server.js:208:11)
+    at ServerResponse.writeHead (/home/ubuntu/haha/node_modules/on-headers/index.js:55:19)
+    at ServerResponse._implicitHeader (_http_server.js:199:8)
+    at write_ (_http_outgoing.js:597:9)
+    at ServerResponse.write (_http_outgoing.js:579:10)
+    at writetop (/home/ubuntu/haha/node_modules/express-session/index.js:290:26)
+    at ServerResponse.end (/home/ubuntu/haha/node_modules/express-session/index.js:351:16)
+    at ServerResponse.redirect (/home/ubuntu/haha/node_modules/express/lib/response.js:947:10)
+    at /home/ubuntu/haha/routes/mysql/auth.js:26:9
+    at Query.<anonymous> (/home/ubuntu/haha/node_modules/express-mysql-session/index.js:232:10)
+    at Query.<anonymous> (/home/ubuntu/haha/node_modules/underscore/underscore.js:957:21)
+    at Query.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Query._callback (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:468:16)
+    at Query.Sequence.end (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:139:8)
+    at Query.OkPacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/sequences/Query.js:72:10)
+    at Protocol._parsePacket (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:189:13)
+Wed, 16 Jan 2019 13:40:16 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+HaHa Admin page listening on port 3000!
+Executing (default): CREATE TABLE IF NOT EXISTS `giftcards` (`id` INTEGER NOT NULL auto_increment , `name` TINYTEXT, `nickname` TINYTEXT, `Ispassword` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `giftcards` FROM `haha_manage`
+Executing (default): CREATE TABLE IF NOT EXISTS `orderedItems` (`id` INTEGER NOT NULL auto_increment , `order_number` TINYTEXT, `productName` VARCHAR(255), `productOption` VARCHAR(255), `orderedSite` VARCHAR(255), `userName` TINYTEXT, `userPhone` TINYTEXT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `orderedItems` FROM `haha_manage`
+Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255), `authId` VARCHAR(255), `displayName` TINYTEXT, `email` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `users` FROM `haha_manage`
+Executing (default): CREATE TABLE IF NOT EXISTS `pins` (`id` INTEGER NOT NULL auto_increment , `writer` TINYTEXT, `price` INTEGER, `pin_number` VARCHAR(255), `pin_number2` VARCHAR(255), `memo` VARCHAR(255), `Isordered` TINYINT(1), `userName` TINYTEXT, `userPhone` TINYTEXT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `giftcardId` INTEGER, `orderedId` INTEGER, `userId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`giftcardId`) REFERENCES `giftcards` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`orderedId`) REFERENCES `orderedItems` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `pins` FROM `haha_manage`
+ DB 연결 성공
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+Executing (default): SELECT count(*) AS `count` FROM `pins` AS `pin`;
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin`;
+0
+Executing (default): SELECT `id`, `writer`, `price`, `pin_number`, `pin_number2`, `memo`, `Isordered`, `userName`, `userPhone`, `createdAt`, `updatedAt`, `giftcardId`, `orderedId`, `userId` FROM `pins` AS `pin` ORDER BY `pin`.`updatedAt` DESC LIMIT 0, 7;
+Executing (default): SELECT `id`, `name`, `authId`, `displayName`, `email`, `createdAt`, `updatedAt` FROM `users` AS `user`;
+Executing (default): SELECT `id`, `name`, `nickname`, `Ispassword`, `createdAt`, `updatedAt` FROM `giftcards` AS `giftcard`;
+events.js:174
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: Connection lost: The server closed the connection.
+    at Protocol.end (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:112:13)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:97:28)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:194:15)
+    at endReadableNT (_stream_readable.js:1129:12)
+    at process.internalTickCallback (internal/process/next_tick.js:72:19)
+Emitted 'error' event at:
+    at Connection._handleProtocolError (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:425:8)
+    at Protocol.emit (events.js:189:13)
+    at Protocol._delegateError (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:390:10)
+    at Protocol.end (/home/ubuntu/haha/node_modules/mysql/lib/protocol/Protocol.js:116:8)
+    at Socket.<anonymous> (/home/ubuntu/haha/node_modules/mysql/lib/Connection.js:97:28)
+    [... lines matching original stack trace ...]
+    at process.internalTickCallback (internal/process/next_tick.js:72:19)

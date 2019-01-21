@@ -1,0 +1,30 @@
+<% include ../layout %>
+<div class="ui two column centered grid">
+  <div class = "column">
+    <div class = "haha-button" style="margin: 2rem;">
+  </div>
+  <table class="ui single line table">
+    <thead>
+      <tr>
+        <th>관리자ID</th>
+        <th>이름</th>
+        <th>이메일 주소</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% for (let member=0; member<members.length; member++) { %>
+      <tr>
+        <td><%= members[member].id%></td>
+        <td><%= members[member].displayName%></td>
+        <td><%= members[member].email%></td>
+        
+      </tr>
+      <% } %>
+
+    </tbody>
+  </table>
+
+</div>
+</div>
+</body>
+</html>

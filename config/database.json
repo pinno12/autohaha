@@ -1,0 +1,41 @@
+{
+  "development": {
+    "user": "hahagift",
+    "username": "hahagift",
+    "password": "hahahaha",
+    "database": "haha_manage",
+    "host": "hahagift.cpolv2t5xh1j.ap-northeast-2.rds.amazonaws.com",
+    "pool": {
+      "max": 20,
+      "min": 0,
+      "idle": 5000
+    },
+    "dialect": "mysql"
+  },
+  "test": {
+    "user": "hahagift",
+    "username": "hahagift",
+    "password": "hahahaha",
+    "database": "database_test",
+    "host": "hahagift.cpolv2t5xh1j.ap-northeast-2.rds.amazonaws.com",
+    "pool": {
+      "max": 20,
+      "min": 0,
+      "idle": 5000
+    },
+    "dialect": "mysql"
+  },
+  "production": {
+    "user": "hahagift",
+    "username": "hahagift",
+    "password": "hahahaha",
+    "database": "database_production",
+    "host": "hahagift.cpolv2t5xh1j.ap-northeast-2.rds.amazonaws.com",
+    "pool": {
+      "max": 20,
+      "min": 0,
+      "idle": 5000
+    },
+    "dialect": "mysql"
+  }
+}

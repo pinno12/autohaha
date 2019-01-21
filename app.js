@@ -299,9 +299,7 @@ app.delete('/delete_pin/:id', function(req, res, next) {
     console.log("데이터 삭제 실패");
   });
 });
-app.get('/pin_byeol', (req,res)=>{
-  res.render('pin/pin_byeol',{title:'핀 번호 두 개 등록'})
-});
+
 app.get('/money',(req,res)=>{
   res.render('pin/money')
 });
@@ -312,5 +310,7 @@ models.sequelize.sync().then( () => {
   console.log(err)
 })
 app.listen(3000, function () {
-  console.log('HaHa Admin page listening on port 3000!');
+  console.log('HaHa Admin page is listening on port 3000');
 });
+
+

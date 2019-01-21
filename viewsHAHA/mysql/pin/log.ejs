@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <% include partials/head %>
+  <% include scripts/scripts %>
+ <body>
+  <% include partials/header %>
+<div class="ui two column centered grid">
+<div class = "column">
+  <table class="ui table">
+    <tbody>
+      <tr>
+        <td class="collapsing">
+          <i class="folder icon"></i> 조회 기간
+        </td>
+        <td>
+          2018년 01월 01일 - 2018년 12월 29일
+
+        </td>
+
+      </tr>
+      <tr>
+        <td>
+          <i class="folder icon"></i> 등록자
+        </td>
+        <td>천주현</td>
+
+      </tr>
+      <tr>
+        <td>
+          <i class="folder icon"></i> 로그 유형
+        </td>
+        <td>
+          <div class="ui dropdown item">
+            이벤트
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item">로그인</div>
+              <div class="item">수정</div>
+              <div class="item">삭제</div>
+              <div class="item">발송</div>
+              <div class="item">에러</div>
+
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class = "column">
+  <button class="ui right floated secondary button">
+    검색
+  </button>
+</div>
+</div>
+</div>
+<div class="ui two column centered grid">
+  <div class = "column">
+    <div class = "haha-button" style="margin: 2rem;">
+    <!-- <button class="ui right floated secondary button">
+      상세보기
+    </button>
+    <button class="ui right floated button">
+      수정
+    </button> -->
+  </div>
+  <table class="ui single line table">
+    <thead>
+      <tr>
+        <th>이름</th>
+
+        <th>상품권 ID</th>
+        <th>로그 유형</th>
+        <th>발생 날짜</th>
+        <th>접속 IP</th>
+        <th>컴퓨터 주인</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>천송이</td>
+
+        <td>DOSEO-43</td>
+        <td>삭제</td>
+        <td>2018-11-05</td>
+        <td>10.35.35.11</td>
+        <td>PINNO</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+<%=logs%>
+</div>
+</div>
+
+<div class="ui two column centered grid">
+  <div class="ui center aligned pagination menu">
+    <a class="item">
+      1
+    </a>
+    <div class="disabled item">
+      ...
+    </div>
+    <a class="item active">
+      10
+    </a>
+    <a class="item">
+      11
+    </a>
+    <a class="item">
+      12
+    </a>
+  </div>
+</div>
+</body>
+
+</html>

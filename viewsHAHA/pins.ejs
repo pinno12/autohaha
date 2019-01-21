@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <title><%= title %></title>
+  <% include partials/head %>
+  <% include scripts/scripts %>
+ <body>
+  <% include partials/header %>
+<div class="ui two column centered grid">
+  <div class = "column">
+    <p><%=pins.id%></p>
+    <p><%=pins.name%></p>
+    <p><%=pins.giftcardId%></p>
+    <p><%=pins.price%></p>
+    <p><%=pins.order_id%></p>
+  </div>
+</html>

@@ -1,0 +1,107 @@
+<% include ./layout %>
+<div class="ui two column centered grid"  style = "padding-top:5.75rem;" >
+  <div class = "column">
+    <h4 class="ui horizontal divider header">
+      <i class="tag icon"></i>
+      상품권 등록
+    </h4>
+    <form action="/create_pin" method="POST">
+      <div class="ui form">
+          <div class = "field">
+              <label>종류</label>         
+          <div class="inline fields">
+              <% for (let giftcard of giftcards) {%>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="giftcardId" value = "<%= giftcard.id %>">                  
+                <label><%=giftcard.name %></label>
+              </div>
+            </div>
+          <% } %>
+          </div>
+        </div>
+      <div class="ui form">
+          <div class = "field">
+            <label>금액</label>
+            <div class="inline fields">
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="inputPrice" value = "100000">
+                  <label>10만원 </label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="inputPrice" value = "50000">
+                  <label> 5만 원</label>
+                </div>
+              </div>
+              <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="inputPrice" value = "30000">
+                    <label> 3만 원</label>
+                  </div>
+                </div>
+              <div class="field">
+                <div class="ui radio checkbox" >
+                  <input type="radio" name="inputPrice" value = "10000">
+                  <label> 만 원</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox"> <!--onclick. label-->
+                  <input type="radio" name="inputPrice" value = "5000">
+                  <label> 5천 원</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="inputPrice" value = "3000">
+                  <label> 3천 원</label>
+                </div>
+              </div>
+
+          <!-- 기타 금액 추가하기 -->
+            </div>
+          </div>
+        </div>
+      <div class="ui form">
+          <div class="two fields">
+            <div class="field">
+                <label>긴 쿠폰 번호*</label>
+                <textarea name="inputPin_number" placeholder="핀번호1 (여러 줄 입력 가능)"></textarea>
+              </div>
+              <div class="field">
+                <label>짧은 번호</label>
+                <textarea name="inputPin_number2" placeholder="핀번호2"></textarea>
+            </div>
+            </div>
+          </div>
+  <!-- <td><input type="text" name="userId" placeholder="글쓴이"></td> -->
+  <div class="ui form">
+      <div class = "field">
+          <label>메모</label>      
+      <div class="inline fields">
+          <input type="text" name="inputMemo" placeholder="메모">
+        </div>
+        </div>
+      </div>
+<button class="ui right floated primary button" type="submit">
+    저장
+  </button>
+</form>
+<button class="ui right floated button">
+  삭제
+</button>
+<button class="ui right floated button">
+  수정
+</button>
+</div>
+</div>
+</body>
+<script>
+    $('.ui.radio.checkbox')
+      .checkbox()
+    ;
+</script>
+</html>

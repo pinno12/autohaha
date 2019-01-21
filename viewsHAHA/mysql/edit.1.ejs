@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1>목록 추가하기</h1>
+  <hr>
+
+  <form action="/update/<%= pin.id %>?_method=PUT" method="post">
+    <table>
+      <tr>
+        <td><input type="text" name="editTitle" value="<%= post.title %>"></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="editWriter" value="<%= post.writer %>"></td>
+      </tr>
+    </table>
+    <input type="submit" value="전송하기">
+  </form>
+</body>
+</html>

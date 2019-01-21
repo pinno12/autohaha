@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <% include partials/head %>
+  <% include scripts/scripts %>
+ <body>
+  <% include partials/header %>
+  <div class="ui two column centered grid">
+    <div class = "column">
+    <h4 class="ui horizontal divider header">
+    <i class="tag icon"></i>
+    컬쳐랜드/PSN 등록
+    </h4>
+
+    <article>
+        <form action="/pin/pin_add_etc" method="post">
+          <p>
+            <input type='text' name= 'name' placeholder= 'name'>
+          </p>
+          <p>
+              <input type='text' name= 'giftcardId' placeholder= '상품권 ID'>
+          </p>
+          <p>
+            <input type="text" name="price" placeholder="금액">
+          </p>
+          <p>
+              <!-- <input type="text" name="pin_number" placeholder="핀번호"> -->
+            <textarea rows = "8" cols="80"name="pin_number" placeholder="핀번호"></textarea>
+          </p>
+          <p>
+            <input type="submit">
+          </p>
+        </form>
+      </article>
+      <div>
+       
+  <button class="ui right floated primary button">
+저장</button>
+<button class="ui right floated button">
+삭제
+</button>
+<button class="ui right floated button">
+수정
+</button>
+</div>
+</div>
+</body>
+</html>

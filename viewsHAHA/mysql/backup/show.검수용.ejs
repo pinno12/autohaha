@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <title><%= title %></title>
+  
+        <!-- Standard Meta -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+      
+        <!-- Site Properties -->
+           
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/reset.css">
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/site.css">
+      
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/container.css">
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/grid.css">
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/header.css">
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/image.css">
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/menu.css">
+      
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/divider.css">
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/list.css">
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/segment.css">
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/dropdown.css">
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist//components/icon.css">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css"></link>
+        <link rel="stylesheet" type="text/css" href="../../public/semantic/dist/semantic.min.css">
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+        <style type="text/css">
+                body {
+                  background-color: #FFFFFF;
+                }
+                .ui.menu .item img.logo {
+                  margin-right: 1.5em;
+                }
+                .main.container {
+                  margin-top: 7em;
+                }
+                .wireframe {
+                  margin-top: 2em;
+                }
+                .ui.footer.segment {
+                  margin: 5em 0em 0em;
+                  padding: 5em 0em;
+                }
+                </style>
+
+<!-- <script src="assets/library/jquery.min.js"></script> -->
+<script src="/semantic/dist/components/form.js"></script>
+<script src="/semantic/dist/components/transition.js"></script>
+<script
+src="https://code.jquery.com/jquery-3.1.1.min.js"
+integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+crossorigin="anonymous"></script>
+<script src="semantic/dist/semantic.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style></style>
+
+ <body>
+
+  <div class="ui fixed inverted menu">
+    <div class="ui container">
+      <a href="/pin" class="header item">
+        <img class="logo" src="/images/logo.JPG">
+        하하 상품권 조회
+      </a>
+      <div class="ui simple dropdown item">
+        핀 번호 등록 <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href="../pin_byeol">스타벅스 등록</a>
+          <a class="item" href="../pin_byeol">별풍선 등록</a>
+          <div class="divider"></div>
+          <a class="item" href="../pin_add_etc">그 외 등록</a>
+        </div>
+      </div>
+      <a href="../log" class="header item">로그 보기</a>
+      <a href="../money" class="header item">장부 보기</a>
+      <a href="../member" class="header item">회원 관리</a>
+      <% if(user){ %>
+        <a href="/auth/logout" class = "header item"><%=user.displayName%> 닫기</a>
+        <%} else{ %>
+        <a href="/auth/login" class = "header item">로그인</a>
+        <% } %>
+    
+    </div>
+  </div>
+
+  <!-- from semantic ui fixed menu -->
+  <style>
+    .ui.two.column.centered.grid{
+            padding-top: 5.75rem;
+    }    
+</style>
+      <h1>검색하기</h1>
+      <form id="form_search" method="GET" action="/show/orSearch" style="width:120px;">
+        <div class = "col-xs-5 col-md-2">
+          <div class="ui category search">
+            <div class="ui icon input"  style = "width:150px;">
+                <input id="id_keyword" name="searchkeyword" class="prompt" type="search" placeholder="검색해요" />
+                <% for (let user of users) {%>
+                  <p><%=user.id %></p>
+                  <% } %>
+                <input type="date" name="startdate">
+                <input type="date" name="enddate">
+                <input id="id_keyword" name="searchkeyword2" class="prompt" type="search" placeholder="검색해요 searchkeyword2" />
+               
+                
+                </div>
+                <input type="submit" value="검색하기"> 
+              </div>
+        </div>
+        </form>
+          <h1>상품권 추가하기</h1>
+          <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="frequency">
+                <label>스타벅스, 별풍선 </label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="frequency">
+                <label>그 외</label>
+              </div>
+            </div>
+          
+      <form action="/create_pin" method="POST">
+        <td><input type="text" name="userId" placeholder="글쓴이"></td>        
+        <!-- <input list ="prices" name = "inputPrice"> -->
+        <h1>상품권 추가하기</h1>
+        <div class="ui form">
+            <div class="inline fields"> 
+              <label>금액</label>
+        <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="inputPrice" value = "100000">
+              <label>10만원 </label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="inputPrice" value = "50000">
+              <label> 5만 원</label>
+            </div>
+          </div>
+          <div class="field">
+              <div class="ui radio checkbox" >
+                <input type="radio" name="inputPrice" value = "10000">
+                <label> 만 원</label>
+              </div>
+            </div>
+            <div class="field">
+                <div class="ui radio checkbox"> <!--onclick. label-->
+                  <input type="radio" name="inputPrice" value = "5000">
+                  <label> 5천 원</label>
+                </div>
+              </div>
+              <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="inputPrice" value = "3000">
+                    <label> 3천 원</label>
+                  </div>
+                </div>
+                <!-- <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="text" name = "inputPrice" placeholder="기타"></input>
+                </div> -->
+              </div>
+            </div>
+        <table> 
+          <tr>
+             <td>
+               <tr>
+              <textarea rows = "8" cols="80"name="inputPin_number" placeholder="핀번호1"></textarea>
+              <textarea rows = "8" cols="80"name="inputPin_number2" placeholder="핀번호2"></textarea>
+              </td>
+               </tr> 
+                 <td><input type="text" name="inputMemo" placeholder="메모"></td>
+                 <td><input type="text" name="giftcardId" placeholder="상품권Id"></td>
+                </tr>
+
+               </table> 
+               <input type="submit" value="전송하기"> 
+          </form>
+          <h1>상품권 번호 보기</h1>
+           
+          count: <%=count %>
+          user: <%=user %>
+
+          <table class="ui celled table example" id = "pin_table">
+              <thead>
+                <tr>
+                  <th>등록자ID</th>
+                  <th>상품권ID</th>
+                  <th>금액</th>
+                  <th>핀번호1</th>
+                  <th>핀번호2/th>
+                  <th>주문 번호</th>
+                  <th>등록 날짜</th>
+                  <th>메모</th>
+                  <td>수정 삭제</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% for (let pin of pins) {%>
+                  <tr>
+                    <td><%= pin.userId %></td>                 
+                    <td><%=pin.giftcardId %></td> 
+                    <td><%=pin.price %></td>
+                    <td><%=pin.pin_number %></td>
+                    <td><%=pin.pin_number2 %></td>
+                    <td><%=pin.orderedid %></td>
+                    <td><%=pin.updatedAt %></td>
+                    <td><%=pin.memo %></td>
+                    <td><button ><a href="/edit_pin/<%=pin.id%>">수정하기</a></button></td>
+                    <form action="/delete_pin/<%=pin.id%>?_method=DELETE" method="post">
+                      <td><input type="submit" value="삭제하기"></input></td>
+                    </form>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+              <!-- http://localhost:3000/show/orSearch?searchkeyword=&startdate=&enddate=&searchkeyword2=dk -->
+              <nav>
+      
+                  <div class="ui pagination menu">
+                      <% for (let i=1; i<= pages ; i++) { %>
+                        <% if (title=="검색") { %>
+                    
+                    <a class="item" href="./orSearch?searchkeyword=<%=searchWord%>&startdate=<%=startDate%>&enddate=<%=endDate%>&searchkeyword2=<%=searchWord2%>&page=<%=i%>"><%=i%></a>
+                    <% } else { %>
+                      <a class="item" href="./<%=i%>"><%=i%></a>
+                    <% } %>
+                    <% } %>                  
+                  </div>
+            
+                </nav>
+                
+                <script src = "../../public/semantic/dist/semantic.min.js"></script>
+              
+                <script>
+                                      function check() {
+                  document.getElementById($(this)).checked = true;
+};
+                    $(document)
+                    .ready(function() {
+  
+
+                      $('.ui.menu .ui.dropdown').dropdown({
+                        on: 'hover'
+                      });
+  
+                      
+                      $('.ui.menu a.item')
+                      .on('click', function() {
+                        $(this)
+                        .addClass('active')
+                        .siblings()
+                        .removeClass('active')
+                        ;
+                      })
+                      ;
+                      
+                      $('.ui.dropdown')
+                    .dropdown()
+                    ;
+                    });
+                    
+                    ;
+                    </script>
+      </body>      
+      </html>

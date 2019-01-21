@@ -1,0 +1,112 @@
+<% include ./layout %>
+<div class="ui two column centered grid" style="padding-top: 5.75rem">
+  <div class = "column">
+    <form id="form_search" method="GET" action="/show/orSearch">  
+      <table class="ui table">
+        <tbody>
+          <tr>
+            <td class="collapsing">
+              <i class="folder icon"></i> 조회 기간        
+            </td>
+            <td>
+              <input type="date" name="startdate"> ~ <input type="date" name="enddate">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <i class="folder icon"></i> 등록자
+            </td>
+            <td>
+              <div class="ui form">     
+                <div class="inline fields">
+                  <% for (let user of users) {%>
+                    <div class="field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="userId" value = "<%= user.id %>">                  
+                        <label><%=user.nickname %></label>
+                      </div>
+                    </div>
+                    <% } %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i class="folder icon"></i> 메모
+              </td>
+              <td>
+                <input id="id_keyword" name="searchkeyword2" class="prompt" type="search" placeholder="메모 검색">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class = "column">
+          <button class="ui right floated secondary button" type="submit">
+            검색
+          </button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  <div class="ui two column centered grid">
+    <div class = "column">
+      총:  <%=count %> 건
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>등록자Id</th>
+            <th>상품권Id</th>
+            <th>금액</th>
+            <th>핀번호1</th>
+            <th>핀번호2</th>
+            <th>주문 번호</th>
+            <th>등록 날짜</th>
+            <th>메모</th>
+            <th>수정 </th>
+            <th>삭제</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let pin of pins) {%>
+            <tr>
+              <td><%= pin.userId %></td>                 
+              <td><%=pin.giftcardId %></td> 
+              <td><%=pin.price %></td>
+              <td><%=pin.pin_number %></td>
+              <td><%=pin.pin_number2 %></td>
+              <td><%=pin.orderedid %></td>
+              <td><%=pin.updatedAt %></td>
+              <td><%=pin.memo %></td>
+              <td><button ><a href="/edit_pin/<%=pin.id%>">수정하기</a></button></td>
+              <form action="/delete_pin/<%=pin.id%>?_method=DELETE" method="post">
+                <td><input type="submit" value="삭제하기"></input></td>
+              </form>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ui two column centered grid">
+        <!-- http://localhost:3000/show/orSearch?startdate=2018-12-15&enddate=2018-12-16&userId=1&searchkeyword2=dk -->
+      <!-- http://localhost:3000/show/orSearch?searchkeyword=&startdate=&enddate=&searchkeyword2=dk -->
+      <nav>        
+        <div class="ui pagination menu">
+          <% for (let i=1; i<= pages ; i++) { %>
+            <% if (title=="검색") { %>
+              
+              <a class="item" href="./orSearch?userId=<%=searchWord%>&startdate=<%=startDate%>&enddate=<%=endDate%>&searchkeyword2=<%=searchWord2%>&page=<%=i%>"><%=i%></a>
+              <% } else { %>
+                <a class="item" href="./<%=i%>"><%=i%></a>
+                <% } %>
+                <% } %>                  
+              </div>              
+            </nav>
+          </div>
+          
+          <% include ./pin/partials/footer %>
+          
+        </body>
+        </html>

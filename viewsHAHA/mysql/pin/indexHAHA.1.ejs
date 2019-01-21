@@ -1,0 +1,154 @@
+<% include ../layout %>
+<div class="ui two column centered grid">
+<div class = "column">
+    <!-- var pin = <% if(locals.pin){ %>pin defined<% }else{ %>pin undefined<% } %>; -->
+  <table class="ui table">
+    <tbody>
+      <tr>
+        <td class="collapsing">
+          <i class="folder icon"></i> 조회 기간
+          
+        </td>
+        <td>
+          <div class="ui compact selection dropdown" id="hh-search">
+            <i class="dropdown icon"></i>
+
+            <div class="text">2018</div>
+            <div class="menu">
+              <div class="item">2018</div>
+              <div class="item">2019</div>
+              <div class="item">2020</div>
+            </div>
+          </div>년
+          <div class="ui compact selection dropdown" id="hh-search">
+            <i class="dropdown icon"></i>
+            <div class="text">7</div>
+            <div class="menu">
+              <div class="item">1</div>
+              <div class="item">2</div>
+              <div class="item">3</div>
+            </div>
+          </div>월
+
+        </td>
+
+      </tr>
+      <tr>
+        <td>
+          <i class="folder icon"></i> 등록자
+        </td>
+        <td>천주현</td>
+
+      </tr>
+      <tr>
+        <td>
+          <i class="folder icon"></i> 메모
+        </td>
+        <td>ㅎㅎ
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class = "column">
+  <button class="ui right floated secondary button">
+    검색
+  </button>
+</div>
+</div>
+</div>
+<div class="ui two column centered grid">
+  <div class = "column">
+  총: <%=pins.length%> 건
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>등록자</th>
+        <th>하하ID</th>
+        <th>상품권ID</th>
+        <th>등록일시</th>
+        <th>금액</th>
+        <th>핀번호</th>
+        <th>주문 번호</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (let pin=0; pin<pins.length; pin++) {%>
+        <tr>
+          <td><%= pins[pin].name %></td>
+          <td><a href = "/pin/<%=pins[pin].id%>"><%= pins[pin].id %></a></td>
+          <td><%= pins[pin].giftcardId %></a></td> 
+          <td><%=pins[pin].date %></td>
+          <td><%=pins[pin].price %></td>
+          <td><%=pins[pin].pin_number %></td>
+          <td><%=pins[pin].order_id %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+      <% if(pin){ %>
+        <table class="ui celled table">
+          <thead>
+            <tr>
+              <th>등록자</th>
+              <th>하하ID</th>
+              <th>상품권ID</th>
+              <th>등록일시</th>
+              <th>금액</th>
+              <th>주문 번호</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%=pin.name%></td>
+                <td><%=pin.id%></td>
+                <td><%=pin.giftcardId%></td>
+                <td><%=pin.date%></td>
+                <td><%=pins.pin_number %></td>
+                <td><%=pin.price%></td>
+                <td><%=pin.order_id%></td>
+            </tr>
+          </tbody>
+        </table> 
+      <% } %>
+
+      <ul>
+        <li>
+          <a href = '/pin_add_etc'>핀 번호 등록</a>
+          <% if(pin){ %>
+            <p><%=pin%></p>
+            <li>
+              <a href = "/pin/<%=pin.id %>/edit">수정</a>
+            </li>
+            <li>
+                <a href = "/pin/<%=pin.id %>/delete">삭제</a>
+            </li>
+          <%} %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+<div class="ui two column centered grid">
+  <div class="ui center aligned pagination menu">
+    <a class="item">
+      1
+    </a>
+    <div class="disabled item">
+      ...
+    </div>
+    <a class="item active">
+      10
+    </a>
+    <a class="item">
+      11
+    </a>
+    <a class="item">
+      12
+    </a>
+  </div>
+</div>
+<% include partials/footer %>
+
+</body>
+</html>
