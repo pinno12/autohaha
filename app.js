@@ -89,12 +89,6 @@ passport.use(new GoogleStrategy({
     }}
   )
 }));
-app.get('/auth/google',
-passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login', 'email'] }));app.get('/auth/google/callback', 
-passport.authenticate('google', { failureRedirect: '/auth/login' }),
-function(req, res) {
-  res.redirect('/show');
-});
 
 // app.get('/log', loggerRouter);
 // find blogs belonging to one user or all blogs
@@ -310,7 +304,14 @@ models.sequelize.sync().then( () => {
   console.log(err)
 })
 app.listen(3000, function () {
+<<<<<<< HEAD
   console.log('HaHa Admin page is listening on port 3000');
 });
 
 
+=======
+  console.log('HaHa Admin page listening on port 3000!');
+});
+
+//test
+>>>>>>> b0e5be15c854fda610c3c7fc263e88afdf080a07
