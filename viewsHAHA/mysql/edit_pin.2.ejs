@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1>상품권 추가하기</h1>
+  <hr>
+  <form action="/update_pin/<%= pin.id %>?_method=PUT" method="post">
+    <td><input type="text" name="edituserId" value="<%= pin.userId %>"></td>
+    <input list ="prices" name = "editPrice" value="<%= pin.price %>" placeholder="금액">
+    <datalist id="prices">
+      <option value="100000">
+      <option value="50000">
+      <option value="10000">
+      <option value="5000">
+      <option value="3000">
+    </datalist>
+  
+    <table> 
+      <tr>
+         <td>
+           <tr>
+          <input type="text" name="editPin_number" value="<%= pin.pin_number %>"></textarea>
+          <input type="text" name="editPin_number2" value="<%= pin.pin_number2 %>" placeholder="핀번호2"></textarea>
+          </td>
+           </tr> 
+             <td><input type="text" name="editMemo" value="<%= pin.memo%>"></td>
+             <td><input type="text" name="editgiftcardId" value="<%= pin.giftcardId%>" placeholder="giftcardId"></td>
+            </tr>
+
+           </table> 
+           <input type="submit" value="전송하기"> 
+      </form>
+ 
+</body>
+</html>
