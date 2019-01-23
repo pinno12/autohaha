@@ -10,7 +10,6 @@ var loggerRouter = require('./routes/log');
 const models = require('./models');
 var bkfd2Password = require("pbkdf2-password");
 var hasher = bkfd2Password();
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 app.use(methodOverride('_method'));
 app.use('/auth', auth);
 app.use('/pin', pin);
@@ -29,66 +28,9 @@ app.get('/add', (req,res)=>{
 app.get('/login', (req,res)=>{
   res.render('auth/login', {user:req.user, title: "로그인해요"})
 });
-app.post(
-  '/login',
-  passport.authenticate(
-    'local',
-    {
-      successRedirect: '/show',
-      failureRedirect: '/auth/login',
-      failureFlash: false
-    }
-  )
-);
-app.use(passport.initialize());   
-app.use(passport.session());
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-
 app.get('/', (req,res,next)=>{
   res.redirect('auth/login');
 })
-
-var googleCredentials = require('./config/google.json');
-passport.use(new GoogleStrategy({
-  clientID: googleCredentials.web.client_id,
-  clientSecret: googleCredentials.web.client_secret,
-  callbackURL: googleCredentials.web.redirect_uris[0]
-},(accessToken, refreshToken, profile, done) => {
-  models.user.findOne({ 
-    where: {
-      email: profile.emails[0].value
-    }
-  }).then(function(user) {
-    if (user) {
-      return done(null, user.get());
-    }
-    else{
-      // if (profile.emails[0].value.includes("@ongift.net")){ //하하 메일 주소일 경우
-      if (profile.emails[0].value.includes("jaview")){ //하하 메일 주소일 경우
-        models.user.create({
-          name: profile.id,
-          email: profile.emails[0].value,
-          nickname: profile.displayName        
-        })
-        .then( user=> {
-          console.log("회원 추가 완료");
-          return done(null, user);
-        })
-        .catch( err => {
-          console.log("회원 추가 실패");
-          res.send(err);
-        })
-      } else{
-        return done("접근 불가")
-      }
-    }}
-  )
-}));
 
 // app.get('/log', loggerRouter);
 // find blogs belonging to one user or all blogs
@@ -222,6 +164,8 @@ app.post('/create_pin', function(req, res, next) {
   let memo = body.inputMemo;
   let giftcardId = body.giftcardId;
   let userId = 1;
+
+	console.log("input 완료");
   //req.user.id
   for (var i =0; i<pins1.length; i++){
     models.pin.create({
@@ -236,10 +180,12 @@ app.post('/create_pin', function(req, res, next) {
       console.log("데이터 추가 완료");          
     })
     .catch( err => {
+      res.send();
       console.log("데이터 추가 실패");
       res.send("입력란에 문제가 있습니다:<");
     })
   }
+//res.render("/show");
   res.redirect("/show");
 });
 app.get('/edit_pin/:id', function(req, res, next) {
@@ -249,10 +195,16 @@ app.get('/edit_pin/:id', function(req, res, next) {
     where: {id: pinID}
   })
   .then( result => {
+    models.giftcard.findAll({})
+    .then (giftcards => {
     res.render("edit_pin", {
-      pin: result
+	    title: "수정해요",
+	    user: 1,
+      pin: result,
+      giftcards: giftcards
     });
   })
+})
   .catch( err => {
     console.log("데이터 조회 실패");
   });
@@ -304,14 +256,8 @@ models.sequelize.sync().then( () => {
   console.log(err)
 })
 app.listen(3000, function () {
-<<<<<<< HEAD
   console.log('HaHa Admin page is listening on port 3000');
 });
 
 
-=======
-  console.log('HaHa Admin page listening on port 3000!');
-});
 
-//test
->>>>>>> b0e5be15c854fda610c3c7fc263e88afdf080a07
