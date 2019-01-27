@@ -100,8 +100,11 @@
 </div>
 </body>
 <script>
-    $('.ui.radio.checkbox')
-      .checkbox()
-    ;
+var Editprice = <%=pin.price %>;
+$('input:radio[name=editPrice]:input[value=' + Editprice + ']').attr("checked", true);
+
+var EditGiftcard = <%=pin.giftcardId%>;
+$('input:radio[name=giftcardId]:input[value=' + EditGiftcard + ']').attr("checked", true);
+
 </script>
 </html>

@@ -155,6 +155,10 @@ app.get('/show/:page', function(req, res, next) {
 app.get('/show/', (req,res)=>{
   res.redirect('/show/1');
 })
+
+app.get('/privacy', (req,res) => {
+	res.render('privacy_policy_haha', {title: "개인정보처리방침", user:"임의"});
+})
 app.post('/create_pin', function(req, res, next) {
   const hyphen = /-/gi;
   let body = req.body;
@@ -213,12 +217,12 @@ app.put('/update_pin/:id', function(req, res, next) {
   let pinID = req.params.id;
   let body = req.body;  
   models.pin.update({
-    userId: body.edituserId,     
+    userId: body.edituserId,
     price: body.editPrice,
     pin_number: body.editPin_number,
     pin_number2: body.editPin_number2,
     memo: body.editMemo,
-    giftcardId: body.editgiftcardId
+    giftcardId: body.giftcardId
   },{
     where: {id: pinID}
   })
